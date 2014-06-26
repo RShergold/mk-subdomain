@@ -15,7 +15,7 @@ Make sure you have a wildcard ( * asterix ) CNAME entry in your DNS settings (in
 
 ![alt tag](http://i.imgur.com/theoTrq.png)
 
-You'll have to wait a while for the DNS update to propogate. 
+You'll have to wait a while for the DNS update to propagate. 
 
 You'll know this is working when __yourdomain.com__, __www.yourdomain.com__, __foo.yourdomain.com__  all show the same page.
 
