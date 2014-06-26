@@ -5,7 +5,7 @@
 # LAMP on Ubuntu image
 #
 
-DOMAIN=remi-shergold.com
+DOMAIN=example.com
 
 
 SITESAVAILABLE=/etc/apache2/sites-available
