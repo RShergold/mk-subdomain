@@ -1,0 +1,42 @@
+#!/bin/bash
+#
+# A small script for automatically adding a
+# subdomain to the standard digitalOcean 
+# LAMP on Ubuntu image
+#
+
+DOMAIN=remi-shergold.com
+
+
+SITESAVAILABLE=/etc/apache2/sites-available
+SITESENABLED=/etc/apache2/sites-enabled
+
+
+if [ $1 == "init" ]; then
+
+        OLDHTMLDIR=/var/www/html
+        DEFAULTDIR=/var/www/default/html
+        DEFAULTCONFIG=000-default.conf
+
+
+        mkdir -p $DEFAULTDIR
+        printf "new index.html in <br> $DEFAULTDIR" > $DEFAULTDIR/index.html
+        sed -i "s|$OLDHTMLDIR|$DEFAULTDIR|g" $SITESAVAILABLE/$DEFAULTCONFIG
+
+
+else
+
+        SUBDOMAIN=$1
+        DOCROOT=/var/www/$SUBDOMAIN/html 
+
+
+        mkdir -p $DOCROOT
+        printf "new index.html in <br> $DOCROOT <br> for: <b>$SUBDOMAIN.$DOMAIN</b>" > $DOCROOT/index.html
+        printf "<VirtualHost *:80>\n\tServerName $SUBDOMAIN.$DOMAIN\n\tDocumentRoot $DOCROOT \n</VirtualHost>" > $SITESAVAILABLE/$SUBDOMAIN.conf
+        ln -s $SITESAVAILABLE/$SUBDOMAIN.conf $SITESENABLED/$SUBDOMAIN.conf 
+
+
+fi
+
+
+service apache2 restart
