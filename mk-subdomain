@@ -20,7 +20,7 @@ if [ $1 == "init" ]; then
 
 
         mkdir -p $DEFAULTDIR
-        printf "new index.html in <br> $DEFAULTDIR" > $DEFAULTDIR/index.html
+        mv $OLDHTMLDIR /var/www/default
         sed -i "s|$OLDHTMLDIR|$DEFAULTDIR|g" $SITESAVAILABLE/$DEFAULTCONFIG
 
 
