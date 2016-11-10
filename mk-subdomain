@@ -32,7 +32,7 @@ else
 
         mkdir -p $DOCROOT
         printf "new index.html in <br> $DOCROOT <br> for: <b>$SUBDOMAIN.$DOMAIN</b>" > $DOCROOT/index.html
-        printf "<VirtualHost *:80>\n\tServerName $SUBDOMAIN.$DOMAIN\n\tDocumentRoot $DOCROOT \n\tErrorLog ${APACHE_LOG_DIR}/error.log\n\tCustomLog ${APACHE_LOG_DIR}/access.log combined\n</VirtualHost>" > $SITESAVAILABLE/$SUBDOMAIN.conf
+        printf "<VirtualHost *:80>\n\tServerName $SUBDOMAIN.$DOMAIN\n\tDocumentRoot $DOCROOT \n\tErrorLog \${APACHE_LOG_DIR}/error.log\n\tCustomLog \${APACHE_LOG_DIR}/access.log combined\n</VirtualHost>" > $SITESAVAILABLE/$SUBDOMAIN.conf
         ln -s $SITESAVAILABLE/$SUBDOMAIN.conf $SITESENABLED/$SUBDOMAIN.conf 
 
 
